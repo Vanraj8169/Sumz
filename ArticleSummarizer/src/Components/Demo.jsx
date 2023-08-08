@@ -1,13 +1,20 @@
 import { linkIcon } from "../assets";
 import { useState } from "react";
+import { useLazyGetSummaryQuery } from "../services/article";
 const Demo = () => {
   const [article, setArticle] = useState({
     url: "",
     summary: "",
   });
 
+  const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
   const handleSubmit = async (e) => {
-   
+    e.preventDefault();
+    const { data } = await getSummary({ articleUrl: article.url });
+    if (data?.summary) {
+      const newArticle = { ...article, summary: data.summary };
+      setArticle(newArticle);
+    }
   };
   return (
     <section className="mt-16 w-full max-w-xl">
