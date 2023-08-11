@@ -5,7 +5,8 @@ Sumz is a dynamic and user-friendly web application designed to streamline your 
 
 ## Screenshot
 
-![image](https://github.com/Vanraj8169/Ai_summarizer/assets/87256781/19c75e25-b6ed-424a-bbeb-33f506279b4e)
+![image](https://github.com/Vanraj8169/Sumz/assets/87256781/a7411a02-e3ac-404e-957c-ccb3cfb9ee4b)
+
 
 ## Features
 
