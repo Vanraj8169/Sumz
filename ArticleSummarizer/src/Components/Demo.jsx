@@ -1,6 +1,7 @@
 import { linkIcon, loader, copy, tick } from "../assets";
 import { useEffect, useState } from "react";
 import { useLazyGetSummaryQuery } from "../services/article";
+
 const Demo = () => {
   const [article, setArticle] = useState({
     url: "",
@@ -10,6 +11,7 @@ const Demo = () => {
   const [allArticles, setAllArticles] = useState([]);
   const [getSummary, { error, isFetching }] = useLazyGetSummaryQuery();
   const [copied, setCopied] = useState("");
+
   useEffect(() => {
     const articleFromLocalStorage = JSON.parse(
       localStorage.getItem("articles")
@@ -18,6 +20,7 @@ const Demo = () => {
       setAllArticles(articleFromLocalStorage);
     }
   }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { data } = await getSummary({ articleUrl: article.url });
@@ -63,7 +66,7 @@ const Demo = () => {
           peer-focus:border-gray-700
           peer-focus:text-gray-700"
           >
-            ↵
+            🚀
           </button>
         </form>
 
@@ -75,7 +78,7 @@ const Demo = () => {
               onClick={() => setArticle(item)}
               className="link_card"
             >
-              <div className="copy_btn" onClick={()=>handleCopy(item.url)}>
+              <div className="copy_btn" onClick={() => handleCopy(item.url)}>
                 <img
                   className="w-[40%] h-[40%] object-contain"
                   src={copied === item.url ? tick : copy}
@@ -91,7 +94,7 @@ const Demo = () => {
       </div>
 
       {/* Display Results */}
-      <div className="my-10 max-w-full flex-justify-center items-center">
+      <div className="my-10 max-w-full flex justify-center items-center">
         {isFetching ? (
           <img src={loader} alt="loader" className="w-20 h-20 object-contain" />
         ) : error ? (
@@ -116,7 +119,6 @@ const Demo = () => {
             </div>
           )
         )}
-        ;
       </div>
     </section>
   );
